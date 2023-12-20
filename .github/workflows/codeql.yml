@@ -4,6 +4,7 @@ on:
   push:
     branches: [ 'develop', 'master', 'release_**', 'dev_branch' ]
   pull_request:
+    types: [ opened, reopened, synchronize ]
     # The branches below must be a subset of the branches above
     branches: [ 'develop', 'dev_branch' ]
   schedule:
