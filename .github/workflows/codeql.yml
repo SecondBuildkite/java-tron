@@ -5,7 +5,7 @@ name: "CodeQL"
 #  branches: [ 'develop', 'master', 'release_**', 'dev_branch' ]
 on:
   pull_request:
-    types: [ opened, reopened, synchronize, edited ]
+    types: [ opened, reopened, synchronize, edited, closed ]
     # The branches below must be a subset of the branches above
     branches: [ 'develop' ]
   schedule:
