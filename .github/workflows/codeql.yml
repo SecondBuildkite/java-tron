@@ -1,9 +1,10 @@
 name: "CodeQL"
 
 
-#push:
-#  branches: [ 'develop', 'master', 'release_**', 'dev_branch' ]
 on:
+  workflow_dispatch:
+  push:
+    branches: [ 'develop', 'master', 'release_**', 'dev_branch' ]
   pull_request:
     types: [ opened, reopened, synchronize, edited]
     # The branches below must be a subset of the branches above
