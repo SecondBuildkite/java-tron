@@ -2,10 +2,8 @@ name: Buildkite
 
 on:
   workflow_run:
-    workflows: [CodeQL]
+    workflows: [CodeQL12345]
     types: [in_progress]
-env:
-  PR_NUMBER: ${{ github.event.number }}
 jobs:
   sonarScan:
 #    name: Sonar Scan
