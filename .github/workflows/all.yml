@@ -31,7 +31,7 @@ jobs:
         uses: "mumianhua/trigger-pipeline-action@v8.0"
         with:
           buildkite_api_access_token: ${{ secrets.BUILD_KITE_WRITE_TOKEN }}
-          pipeline: "tronprotocol/githubactiondebianunittest"
+          pipeline: "tronprotocol/githubactioncentosunittest"
           branch: ${{ github.event.workflow_run.head_branch }}
           commit: ${{ github.event.workflow_run.head_sha }}
           pull_request_number: ${{ steps.source-run-info.outputs.pullRequestNumber }}
@@ -80,7 +80,7 @@ jobs:
 #        uses: "mumianhua/trigger-pipeline-action@v8.0"
 #        with:
 #          buildkite_api_access_token: ${{ secrets.BUILD_KITE_WRITE_TOKEN }}
-#          pipeline: "nnnnnnnnnnnn/notwell1"
+#          pipeline: "tronprotocol/githubactiondebianunittest"
 #          branch: ${{ github.event.workflow_run.head_branch }}
 #          commit: ${{ github.event.workflow_run.head_sha }}
 #          pull_request_number: ${{ steps.source-run-info.outputs.pullRequestNumber }}
@@ -129,7 +129,7 @@ jobs:
 #        uses: "mumianhua/trigger-pipeline-action@v8.0"
 #        with:
 #          buildkite_api_access_token: ${{ secrets.BUILD_KITE_WRITE_TOKEN }}
-#          pipeline: "nnnnnnnnnnnn/notwell1"
+#          pipeline: "tronprotocol/githubactioncentosunittest"
 #          branch: ${{ github.event.workflow_run.head_branch }}
 #          commit: ${{ github.event.workflow_run.head_sha }}
 #          pull_request_number: ${{ steps.source-run-info.outputs.pullRequestNumber }}
@@ -227,7 +227,7 @@ jobs:
 #        uses: "mumianhua/trigger-pipeline-action@v8.0"
 #        with:
 #          buildkite_api_access_token: ${{ secrets.BUILD_KITE_WRITE_TOKEN }}
-#          pipeline: "nnnnnnnnnnnn/notwell1"
+#          pipeline: "tronprotocol/api-smoke-testing"
 #          branch: ${{ github.event.workflow_run.head_branch }}
 #          commit: ${{ github.event.workflow_run.head_sha }}
 #          pull_request_number: ${{ steps.source-run-info.outputs.pullRequestNumber }}
