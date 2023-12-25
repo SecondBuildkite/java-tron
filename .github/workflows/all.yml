@@ -31,7 +31,7 @@ jobs:
         uses: "mumianhua/trigger-pipeline-action@v8.0"
         with:
           buildkite_api_access_token: ${{ secrets.BUILD_KITE_WRITE_TOKEN }}
-          pipeline: "tronprotocol/githubactionubuntuunittest"
+          pipeline: "tronprotocol/githubactionapismoketesting"
           branch: ${{ github.event.workflow_run.head_branch }}
           commit: ${{ github.event.workflow_run.head_sha }}
           pull_request_number: ${{ steps.source-run-info.outputs.pullRequestNumber }}
@@ -54,55 +54,55 @@ jobs:
           echo "failed !!!!"
           echo "buildkite result is:  ${{ steps.download.outputs.build-state }}"
           exit 1
-#  debianUnitTest:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: haya14busa/action-workflow_run-status@v1
-#      - uses: actions/checkout@v2
-#      - name: "Get information about the origin 'CI' run"
-#        uses: potiuk/get-workflow-origin@v1_5
-#        id: source-run-info
-#        with:
-#          token: ${{ secrets.GITHUB_TOKEN }}
-#          sourceRunId: ${{ github.event.workflow_run.id }}
-#      - name: ttt
-#        run: |
-#          echo ${{ steps.source-run-info.outputs.targetBranch }}
-#          echo ${{ steps.source-run-info.outputs.targetCommitSha }}
-#          echo ${{ steps.source-run-info.outputs.mergeCommitSha }}
-#          echo ${{ steps.source-run-info.outputs.pullRequestNumber }}
-#          echo ${{ steps.source-run-info.outputs.sourceEvent }}
-#          echo ${{ steps.source-run-info.outputs.sourceHeadSha }}
-#          echo "head_branch is: ${{ github.event.workflow_run.head_branch }}"
-#          echo "head_sha is: ${{ github.event.workflow_run.head_sha }}"
-#      - name: Trigger Debian Unit Test
-#        id: build
-#        uses: "mumianhua/trigger-pipeline-action@v8.0"
-#        with:
-#          buildkite_api_access_token: ${{ secrets.BUILD_KITE_WRITE_TOKEN }}
-#          pipeline: "tronprotocol/githubactiondebianunittest"
-#          branch: ${{ github.event.workflow_run.head_branch }}
-#          commit: ${{ github.event.workflow_run.head_sha }}
-#          pull_request_number: ${{ steps.source-run-info.outputs.pullRequestNumber }}
-#          pull_request_base_branch: ${{ steps.source-run-info.outputs.targetBranch }}
-#      - name: Get Build Kite URL
-#        run: |
-#          echo "buildkite link is: ${{ steps.build.outputs.url }}"
-#      - name: Waitting Buildkite Artifacts
-#        id: download
-#        uses: EnricoMi/download-buildkite-artifact-action@v1
-#        with:
-#          buildkite_token: ${{ secrets.BUILD_KITE_READ_TOKEN }}
-#          buildkite_build_url: ${{ steps.build.outputs.url }}
-#          ignore_build_states: blocked,canceled,skipped,not_run
-#          ignore_job_states: timed_out,failed
-#          output_path: artifacts
-#      - name: Check Result
-#        if: steps.download.outputs.build-state != 'passed'
-#        run: |
-#          echo "failed !!!!"
-#          echo "buildkite result is:  ${{ steps.download.outputs.build-state }}"
-#          exit 1
+  debianUnitTest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: haya14busa/action-workflow_run-status@v1
+      - uses: actions/checkout@v2
+      - name: "Get information about the origin 'CI' run"
+        uses: potiuk/get-workflow-origin@v1_5
+        id: source-run-info
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          sourceRunId: ${{ github.event.workflow_run.id }}
+      - name: ttt
+        run: |
+          echo ${{ steps.source-run-info.outputs.targetBranch }}
+          echo ${{ steps.source-run-info.outputs.targetCommitSha }}
+          echo ${{ steps.source-run-info.outputs.mergeCommitSha }}
+          echo ${{ steps.source-run-info.outputs.pullRequestNumber }}
+          echo ${{ steps.source-run-info.outputs.sourceEvent }}
+          echo ${{ steps.source-run-info.outputs.sourceHeadSha }}
+          echo "head_branch is: ${{ github.event.workflow_run.head_branch }}"
+          echo "head_sha is: ${{ github.event.workflow_run.head_sha }}"
+      - name: Trigger Debian Unit Test
+        id: build
+        uses: "mumianhua/trigger-pipeline-action@v8.0"
+        with:
+          buildkite_api_access_token: ${{ secrets.BUILD_KITE_WRITE_TOKEN }}
+          pipeline: "tronprotocol/githubactionsonarscan"
+          branch: ${{ github.event.workflow_run.head_branch }}
+          commit: ${{ github.event.workflow_run.head_sha }}
+          pull_request_number: ${{ steps.source-run-info.outputs.pullRequestNumber }}
+          pull_request_base_branch: ${{ steps.source-run-info.outputs.targetBranch }}
+      - name: Get Build Kite URL
+        run: |
+          echo "buildkite link is: ${{ steps.build.outputs.url }}"
+      - name: Waitting Buildkite Artifacts
+        id: download
+        uses: EnricoMi/download-buildkite-artifact-action@v1
+        with:
+          buildkite_token: ${{ secrets.BUILD_KITE_READ_TOKEN }}
+          buildkite_build_url: ${{ steps.build.outputs.url }}
+          ignore_build_states: blocked,canceled,skipped,not_run
+          ignore_job_states: timed_out,failed
+          output_path: artifacts
+      - name: Check Result
+        if: steps.download.outputs.build-state != 'passed'
+        run: |
+          echo "failed !!!!"
+          echo "buildkite result is:  ${{ steps.download.outputs.build-state }}"
+          exit 1
 #  centosUnitTest:
 #    runs-on: ubuntu-latest
 #    steps:
