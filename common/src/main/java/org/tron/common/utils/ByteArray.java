@@ -103,7 +103,7 @@ public class ByteArray {
       objectOutputStream.flush();
       bytes = byteArrayOutputStream.toByteArray();
     } catch (IOException e) {
-      logger.error("objectToByteArray is considered as failed: " + e.getMessage(), e);
+      logger.error("objectToByteArray is consideredd as failed: " + e.getMessage(), e);
     }
     return bytes;
   }
